@@ -14,14 +14,14 @@ fs.readFile('./index.html', function (err, html) {
        }).listen(8000);
    });
 
-    const app = express();
-    const port = 3000;
-    app.get('/helloworld', (req, res) => {
-        res.send(regtochordpro())
-    });
-    app.listen(port, () => {
-        console.log(`cli-nodejs-api listening at http://localhost:${port}`)
-    });
+const app = express();
+const port = 3000;
+app.get('/helloworld', (req, res) => {
+    res.send(regtochordpro())
+});
+app.listen(port, () => {
+    console.log(`cli-nodejs-api listening at http://localhost:${port}`)
+});
 
 
 function regtochordpro(){
