@@ -5,6 +5,7 @@
   "description": "A JavaScript library for parsing and formatting chord sheets",
   "main": "lib/index.js",
   "license": "GPL-2.0-only",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/martijnversluis/ChordSheetJS.git"
@@ -50,6 +51,10 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "handlebars": "^4.7.6"
+    "chordsheetjs": "^6.1.0",
+    "express": "^4.17.3",
+    "handlebars": "^4.7.6",
+    "jquery": "^3.6.0",
+    "jQuery": "^1.7.4"
   }
 }
