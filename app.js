@@ -2,26 +2,37 @@ import ChordSheetJS from 'chordsheetjs';
 import http from 'http';
 import fs from 'fs';
 import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-fs.readFile('./index.html', function (err, html) {
-       if (err) {
-           throw err; 
-       }       
-       http.createServer(function(request, response) {  
-           response.writeHeader(200, {"Content-Type": "text/html"});  
-           response.write(html);  
-           response.end();  
-       }).listen(8000);
-   });
+// fs.readFile('./index.html', function (err, html) {
+//        if (err) {
+//            throw err; 
+//        }       
+//        http.createServer(function(request, response) {  
+//            response.writeHeader(200, {"Content-Type": "text/html"});  
+//            response.write(html);  
+//            response.end();  
+//        }).listen(8000);
+//    });
 
 const app = express();
-const port = 3000;
-app.get('/helloworld', (req, res) => {
-    res.send(regtochordpro())
-});
-app.listen(port, () => {
-    console.log(`cli-nodejs-api listening at http://localhost:${port}`)
-});
+const port = 80;
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '/index.html'));
+  });
+  
+
+app.listen(port);
+console.log('Server started at http://localhost:' + port);
+// app.get('/chord', (req, res) => {
+//     res.send(regtochordpro(),{chordpro:regtochordpro()})
+// });
+// app.listen(port, () => {
+//     console.log(`cli-nodejs-api listening at http://localhost:${port}`)
+// });
 
 
 function regtochordpro(){

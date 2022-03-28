@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Convert Chordpro</title>
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <style>   /*Contact sectiom*/
             .content-header{
             font-family: 'Oleo Script', cursive;
@@ -73,8 +73,14 @@
             $(document).ready(function () {
                 $("#btn").click(function () {
                     var txt = $("#original").val();
-
-                    alert(txt);
+                    $.post("/helloworld",
+                    {
+                        name: "Donald Duck",
+                        city: "Duckburg"
+                    },
+                    function(data, status){
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
                 });
             });
         </script>
