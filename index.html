@@ -73,13 +73,12 @@
             $(document).ready(function () {
                 $("#btn").click(function () {
                     var txt = $("#original").val();
-                    $.post("/helloworld",
+                    $.post("/chord",
                     {
-                        name: "Donald Duck",
-                        city: "Duckburg"
+                        chord: txt,
                     },
                     function(data, status){
-                        alert("Data: " + data + "\nStatus: " + status);
+                        $("#translated").val(data.chord);
                     });
                 });
             });
@@ -96,7 +95,7 @@
         </div>
         <div class="contact-section">
             <div class="container">
-                <form>	
+                <form action="#">	
                 <div class="col-md-6 form-line">
                     <div class="form-group"> 
                         <label for="from"> From</label>
