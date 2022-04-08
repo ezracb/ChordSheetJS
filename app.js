@@ -32,7 +32,7 @@ app.get("/", function (req, res) {
 
 app.post("/chord", (req, res) => {
   const originalChord = req.body.chord;
-  const chordProChord = regtochordpro(originalChord);
+  const chordProChord = ugtochordpro(originalChord);
   res.json({chord: chordProChord});
 });
 
@@ -49,6 +49,22 @@ function regtochordpro(originalChord) {
   const chordSheet = originalChord;
 
   const parser = new ChordSheetJS.ChordSheetParser({
+    preserveWhitespace: false,
+  });
+  const song = parser.parse(chordSheet);
+
+  const formatter = new ChordSheetJS.ChordProFormatter();
+  const disp = formatter.format(song);
+
+  console.log("inside function" + disp);
+  return disp;
+}
+
+
+function ugtochordpro(originalChord) {
+  const chordSheet = originalChord;
+
+  const parser = new ChordSheetJS.UltimateGuitarParser({
     preserveWhitespace: false,
   });
   const song = parser.parse(chordSheet);
